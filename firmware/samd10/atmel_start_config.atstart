@@ -26,13 +26,13 @@ drivers:
     functionality: System
     api: HAL:HPL:GCLK
     configuration:
-      $input: 8000000
-      $input_id: 8MHz Internal Oscillator (OSC8M)
-      RESERVED_InputFreq: 8000000
-      RESERVED_InputFreq_id: 8MHz Internal Oscillator (OSC8M)
+      $input: 400000
+      $input_id: External Crystal Oscillator 0.4-32MHz (XOSC)
+      RESERVED_InputFreq: 400000
+      RESERVED_InputFreq_id: External Crystal Oscillator 0.4-32MHz (XOSC)
       _$freq_output_Generic clock generator 0: 48000000
       _$freq_output_Generic clock generator 1: 333333.3333333333
-      _$freq_output_Generic clock generator 2: 400000
+      _$freq_output_Generic clock generator 2: null
       _$freq_output_Generic clock generator 3: 32000
       _$freq_output_Generic clock generator 4: 400000
       _$freq_output_Generic clock generator 5: 400000
@@ -84,9 +84,9 @@ drivers:
       gclk_gen_1_div: 24
       gclk_gen_1_div_sel: false
       gclk_gen_1_oscillator: 8MHz Internal Oscillator (OSC8M)
-      gclk_gen_2_div: 1
+      gclk_gen_2_div: 4000
       gclk_gen_2_div_sel: false
-      gclk_gen_2_oscillator: External Crystal Oscillator 0.4-32MHz (XOSC)
+      gclk_gen_2_oscillator: 8MHz Internal Oscillator (OSC8M)
       gclk_gen_3_div: 250
       gclk_gen_3_div_sel: false
       gclk_gen_3_oscillator: 8MHz Internal Oscillator (OSC8M)
@@ -128,6 +128,36 @@ drivers:
           external: false
           external_frequency: 0
         configuration: {}
+  TIMER_0:
+    user_label: TIMER_0
+    definition: Atmel:SAMD10_Drivers:0.0.1::SAMD10C13A-SSU::TC1::driver_config_definition::Timer::HAL:Driver:Timer
+    functionality: Timer
+    api: HAL:Driver:Timer
+    configuration:
+      tc_arch_dbgrun: false
+      tc_arch_evact: Event action disabled
+      tc_arch_mceo0: false
+      tc_arch_mceo1: false
+      tc_arch_ovfeo: false
+      tc_arch_presync: Reload or reset counter on next GCLK
+      tc_arch_runstdby: false
+      tc_arch_tcei: false
+      tc_arch_tceinv: false
+      timer_advanced_configuration: true
+      timer_event_control: false
+      timer_prescaler: Divide by 8
+      timer_tick: 50
+    optional_signals: []
+    variant: null
+    clocks:
+      domain_group:
+        nodes:
+        - name: TC
+          input: Generic clock generator 0
+          external: false
+          external_frequency: 0
+        configuration:
+          tc_gclk_selection: Generic clock generator 0
   DAC_0:
     user_label: DAC_0
     definition: Atmel:SAMD10_Drivers:0.0.1::SAMD10C13A-SSU::DAC::driver_config_definition::DAC::HAL:Driver:DAC.Sync

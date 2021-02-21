@@ -21,7 +21,12 @@ extern "C" {
 #include <hal_io.h>
 #include <hal_sleep.h>
 
+#include <hal_timer.h>
+#include <hpl_tc_base.h>
+
 #include <hal_dac_sync.h>
+
+extern struct timer_descriptor TIMER_0;
 
 extern struct dac_sync_descriptor DAC_0;
 

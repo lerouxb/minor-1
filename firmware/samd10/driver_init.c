@@ -13,7 +13,22 @@
 #include <hpl_gclk_base.h>
 #include <hpl_pm_base.h>
 
+struct timer_descriptor TIMER_0;
+
 struct dac_sync_descriptor DAC_0;
+
+/**
+ * \brief Timer initialization function
+ *
+ * Enables Timer peripheral, clocks and initializes Timer driver
+ */
+static void TIMER_0_init(void)
+{
+	_pm_enable_bus_clock(PM_BUS_APBC, TC1);
+	_gclk_enable_channel(TC1_GCLK_ID, CONF_GCLK_TC1_SRC);
+
+	timer_init(&TIMER_0, TC1, _tc_get_timer());
+}
 
 void DAC_0_PORT_init(void)
 {
@@ -56,5 +71,6 @@ void system_init(void)
 
 	gpio_set_pin_function(LED, GPIO_PIN_FUNCTION_OFF);
 
+	TIMER_0_init();
 	DAC_0_init();
 }

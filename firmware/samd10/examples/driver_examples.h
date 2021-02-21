@@ -12,6 +12,8 @@
 extern "C" {
 #endif
 
+void TIMER_0_example(void);
+
 void DAC_0_example(void);
 
 #ifdef __cplusplus

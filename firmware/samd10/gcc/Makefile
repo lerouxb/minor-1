@@ -34,10 +34,11 @@ endif
 # List the subdirectories for creating object files
 SUB_DIRS +=  \
  \
-gcc \
+hpl/tc \
 hpl/dac \
 hpl/dmac \
 hal/src \
+gcc \
 hpl/pm \
 hpl/sysctrl \
 hal/utils/src \
@@ -51,6 +52,7 @@ OBJS +=  \
 hal/src/hal_io.o \
 gcc/gcc/startup_samd10.o \
 hal/utils/src/utils_syscalls.o \
+hal/src/hal_timer.o \
 hal/src/hal_delay.o \
 hpl/pm/hpl_pm.o \
 hpl/core/hpl_init.o \
@@ -71,12 +73,14 @@ gcc/system_samd10.o \
 hal/utils/src/utils_event.o \
 hal/src/hal_sleep.o \
 atmel_start.o \
+hpl/tc/hpl_tc.o \
 hal/src/hal_atomic.o
 
 OBJS_AS_ARGS +=  \
 "hal/src/hal_io.o" \
 "gcc/gcc/startup_samd10.o" \
 "hal/utils/src/utils_syscalls.o" \
+"hal/src/hal_timer.o" \
 "hal/src/hal_delay.o" \
 "hpl/pm/hpl_pm.o" \
 "hpl/core/hpl_init.o" \
@@ -97,6 +101,7 @@ OBJS_AS_ARGS +=  \
 "hal/utils/src/utils_event.o" \
 "hal/src/hal_sleep.o" \
 "atmel_start.o" \
+"hpl/tc/hpl_tc.o" \
 "hal/src/hal_atomic.o"
 
 # List the directories containing header files
@@ -113,6 +118,7 @@ DIR_INCLUDES +=  \
 -I"../hpl/pm" \
 -I"../hpl/port" \
 -I"../hpl/sysctrl" \
+-I"../hpl/tc" \
 -I"../hri" \
 -I"../" \
 -I"../CMSIS/Core/Include" \
@@ -126,6 +132,7 @@ DEPS_AS_ARGS +=  \
 "hal/src/hal_io.d" \
 "gcc/gcc/startup_samd10.d" \
 "hal/utils/src/utils_syscalls.d" \
+"hal/src/hal_timer.d" \
 "hpl/core/hpl_core_m0plus_base.d" \
 "hal/utils/src/utils_list.d" \
 "hpl/dmac/hpl_dmac.d" \
@@ -144,6 +151,7 @@ DEPS_AS_ARGS +=  \
 "hal/src/hal_dac_sync.d" \
 "hal/utils/src/utils_event.d" \
 "hal/src/hal_atomic.d" \
+"hpl/tc/hpl_tc.d" \
 "hpl/pm/hpl_pm.d" \
 "atmel_start.d"
 
