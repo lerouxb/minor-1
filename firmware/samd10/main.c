@@ -10,7 +10,13 @@ int main(void)
 	dac_sync_enable_channel(&DAC_0, 0);
 
 	for (;;) {
-		dac_sync_write(&DAC_0, 0, &i, 1);
+		//dac_sync_write(&DAC_0, 0, &i, 1);
+
+                DAC_CRITICAL_SECTION_ENTER();
+                ((Dac *)(DAC_0.device.hw))->DATA.reg = i;
+                //hri_dac_wait_for_sync(DAC_0.device.hw);
+                DAC_CRITICAL_SECTION_LEAVE();
+
 		i = (i + 1) % 1024;
 	}
 }
