@@ -741,4 +741,5 @@ Text GLabel 10200 2900 0    50   Output ~ 0
 BUTTON7
 Text GLabel 10200 3000 0    50   Output ~ 0
 BUTTON8
+NoConn ~ 10100 -50 
 $EndSCHEMATC
