@@ -257,6 +257,8 @@ void system_init()
 
 	CLKCTRL_init();
 
+	VREF_0_init();
+
 	ADC_0_initialization();
 
 	USART_0_initialization();

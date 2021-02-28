@@ -50,6 +50,7 @@
         <file category="doc" condition="ARMCC, GCC, IAR, XC8" name="modules/timer/doc/tca.rst"/>
         <file category="doc" condition="ARMCC, GCC, IAR, XC8" name="modules/twi/doc/twi.rst"/>
         <file category="doc" condition="ARMCC, GCC, IAR, XC8" name="modules/usart/doc/usart_basic.rst"/>
+        <file category="doc" condition="ARMCC, GCC, IAR, XC8" name="modules/vref/doc/vref.rst"/>
         <file category="source" condition="ARMCC, GCC, IAR, XC8" name="main.c"/>
         <file category="source" condition="ARMCC, GCC, IAR, XC8" name="src/driver_init.c"/>
         <file category="header" condition="ARMCC, GCC, IAR, XC8" name="include/driver_init.h"/>
@@ -92,6 +93,7 @@
         <file category="header" condition="ARMCC, GCC, IAR, XC8" name="include/system.h"/>
         <file category="header" condition="ARMCC, GCC, IAR, XC8" name="include/tca.h"/>
         <file category="header" condition="ARMCC, GCC, IAR, XC8" name="include/usart_basic.h"/>
+        <file category="header" condition="ARMCC, GCC, IAR, XC8" name="include/vref.h"/>
         <file category="source" condition="ARMCC, GCC, IAR, XC8" name="src/adc_basic.c"/>
         <file category="source" condition="ARMCC, GCC, IAR, XC8" name="src/bod.c"/>
         <file category="source" condition="ARMCC, GCC, IAR, XC8" name="src/clkctrl.c"/>
@@ -104,6 +106,7 @@
         <file category="source" condition="ARMCC, GCC, IAR, XC8" name="src/slpctrl.c"/>
         <file category="source" condition="ARMCC, GCC, IAR, XC8" name="src/tca.c"/>
         <file category="source" condition="ARMCC, GCC, IAR, XC8" name="src/usart_basic.c"/>
+        <file category="source" condition="ARMCC, GCC, IAR, XC8" name="src/vref.c"/>
         <file category="header" condition="ARMCC, GCC, IAR, XC8" name="utils/assembler.h"/>
         <file category="header" condition="ARMCC, GCC, IAR, XC8" name="utils/assembler/gas.h"/>
         <file category="header" condition="ARMCC, GCC, IAR, XC8" name="utils/assembler/iar.h"/>

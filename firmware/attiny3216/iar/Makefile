@@ -79,6 +79,7 @@ $(OBJDIR)/slpctrl.o \
 $(OBJDIR)/bod.o \
 $(OBJDIR)/atmel_start.o \
 $(OBJDIR)/cpuint.o \
+$(OBJDIR)/vref.o \
 $(OBJDIR)/i2c_simple_master.o \
 $(OBJDIR)/clkctrl.o \
 $(OBJDIR)/dac_basic_example.o \

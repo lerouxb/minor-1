@@ -42,6 +42,7 @@ src/slpctrl.o \
 src/bod.o \
 atmel_start.o \
 src/cpuint.o \
+src/vref.o \
 src/i2c_simple_master.o \
 src/clkctrl.o \
 examples/src/dac_basic_example.o \
@@ -64,6 +65,7 @@ OBJS_AS_ARGS +=  \
 "src/bod.o" \
 "atmel_start.o" \
 "src/cpuint.o" \
+"src/vref.o" \
 "src/i2c_simple_master.o" \
 "src/clkctrl.o" \
 "examples/src/dac_basic_example.o" \
@@ -91,6 +93,7 @@ DEPS_AS_ARGS +=  \
 "src/clkctrl.d" \
 "src/cpuint.d" \
 "src/adc_basic.d" \
+"src/vref.d" \
 "main.d" \
 "src/bod.d" \
 "src/slpctrl.d" \
@@ -199,4 +202,3 @@ clean:
 
 flash:  $(OUTPUT_FILE_NAME).hex
 	pyupdi -d tiny3216 -c /dev/cu.usbserial-DA01L36P -f AtmelStart.hex
-

@@ -74,6 +74,26 @@ drivers:
           external: false
           external_frequency: 0
         configuration: {}
+  VREF_0:
+    user_label: VREF_0
+    definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny3216-SNR::VREF::driver_config_definition::VREF::Drivers:VREF:Init
+    functionality: VREF
+    api: Drivers:VREF:Init
+    configuration:
+      adc0_force_enable: false
+      adc0_voltage_reference: Voltage reference at 0.55V
+      adc1_force_enable: false
+      adc1_voltage_reference: Voltage reference at 0.55V
+      dac0_force_enable: true
+      dac0_voltage_reference: Voltage reference at 0.55V
+      dac1_force_enable: false
+      dac1_voltage_reference: Voltage reference at 0.55V
+      dac2_force_enable: false
+      dac2_voltage_reference: Voltage reference at 0.55V
+    optional_signals: []
+    variant: null
+    clocks:
+      domain_group: null
   ADC_0:
     user_label: ADC_0
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny3216-SNR::ADC0::driver_config_definition::ADC.Basic::Drivers:ADC:Basic
@@ -218,7 +238,7 @@ drivers:
     api: Drivers:DAC:Basic
     configuration:
       dac_ctrla_enable: true
-      dac_ctrla_outen: false
+      dac_ctrla_outen: true
       dac_ctrla_runstdby: false
       dac_data: 0
     optional_signals:
