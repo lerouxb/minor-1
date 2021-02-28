@@ -73,7 +73,7 @@ int8_t TIMER_0_init()
 
 	TCA0.SINGLE.PER = 0x31; /* Period: 0x31 */
 
-	TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV16_gc /* System Clock / 16 */
+	TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV8_gc /* System Clock / 8 */
 	                    | 1 << TCA_SINGLE_ENABLE_bp /* Module Enable: enabled */;
 
 	return 0;

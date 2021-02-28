@@ -38,7 +38,7 @@ extern "C" {
 #endif
 
 #define TWI0_BAUD(F_SCL, T_RISE)                                                                                       \
-	((((((float)16000000 / (float)F_SCL)) - 10 - ((float)16000000 * T_RISE / 1000000))) / 2)
+	((((((float)10000000 / (float)F_SCL)) - 10 - ((float)10000000 * T_RISE / 1000000))) / 2)
 
 void I2C_0_init(void);
 

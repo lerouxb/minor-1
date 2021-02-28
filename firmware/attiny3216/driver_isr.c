@@ -35,3 +35,51 @@
 
 #include <driver_init.h>
 #include <compiler.h>
+
+extern int16_t note;
+
+unsigned int acc;
+unsigned int pulse = 0;
+int pulse_amount = 1;
+
+#define MIN_PULSE 6553
+#define MAX_PULSE 65536 - 6553
+
+
+ISR(TCA0_OVF_vect) {
+    // TODO: should the pulse change even when we're not pressing a note or only when pressing a note?
+
+    printf(".\r\n");
+
+    // forwards/backwards
+    if (pulse_amount > 0) {
+        if (pulse + pulse_amount > MAX_PULSE) {
+            pulse_amount = -pulse_amount;
+        }
+    }
+    else  {
+        if (pulse + pulse_amount < MIN_PULSE) {
+            pulse_amount = -pulse_amount;
+        }
+    }
+    pulse += pulse_amount; // assuming PulseAmount == 1 and we're going end to end (which we're not): 65556 / 20000 == ~3.25hz
+
+    if (note == -1) {
+        // middle-value == "off"
+        DAC_0_set_output(127);
+    }
+    else {
+        acc = acc + note;
+
+        // funny how we're using a DAC and right now we're only using it to make a square wave :)
+        if (acc < pulse) {
+            DAC_0_set_output(255);
+        }
+        else {
+            DAC_0_set_output(0);
+        }
+    }
+
+    /* The interrupt flag has to be cleared manually */
+    TCA0.SINGLE.INTFLAGS = TCA_SINGLE_OVF_bm;
+}

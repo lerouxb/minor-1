@@ -40,7 +40,7 @@ extern "C" {
 #define I2C_TIMEOUT 10000
 
 #define TWI0_BAUD(F_SCL, T_RISE)                                                                                       \
-	((((((float)16000000 / (float)F_SCL)) - 10 - ((float)16000000 * T_RISE / 1000000))) / 2)
+	((((((float)10000000 / (float)F_SCL)) - 10 - ((float)10000000 * T_RISE / 1000000))) / 2)
 
 uint8_t     I2C_0_read1ByteRegister(i2c_address_t address, uint8_t reg);
 uint16_t    I2C_0_read2ByteRegister(i2c_address_t address, uint8_t reg);

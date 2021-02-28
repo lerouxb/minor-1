@@ -149,7 +149,7 @@ $(OUTPUT_FILE_PATH): $(OBJS)
 %.o: %.c
 	@echo Building file: $<
 	@echo AVR/GNU C Compiler
-	$(QUOTE)avr-gcc$(QUOTE) -x c -DF_CPU=16000000 -DDEBUG -Os -ffunction-sections -g3 -Wall -c -std=gnu99 \
+	$(QUOTE)avr-gcc$(QUOTE) -x c -DF_CPU=10000000 -DDEBUG -Os -ffunction-sections -g3 -Wall -c -std=gnu99 \
 -mmcu=attiny3216 -B "$(MAKEFILE_DIR)../gcc/dev/attiny3216" \
     -D__tiny3216__ \
 -I"../config" -I"../examples/include" -I"../include" -I"../utils" -I"../utils/assembler" -I"../" -I"../include"  \
@@ -160,7 +160,7 @@ $(OUTPUT_FILE_PATH): $(OBJS)
 %.o: %.s
 	@echo Building file: $<
 	@echo AVR/GNU Assembler
-	$(QUOTE)avr-gcc$(QUOTE) -x assembler-with-cpp -DF_CPU=16000000 -DDEBUG -Os -ffunction-sections -g3 -Wall -c -std=gnu99 \
+	$(QUOTE)avr-gcc$(QUOTE) -x assembler-with-cpp -DF_CPU=10000000 -DDEBUG -Os -ffunction-sections -g3 -Wall -c -std=gnu99 \
 -mmcu=attiny3216 -B "$(MAKEFILE_DIR)../gcc/dev/attiny3216" \
     -D__tiny3216__ \
 -I"../config" -I"../examples/include" -I"../include" -I"../utils" -I"../utils/assembler" -I"../" -I"../include"  \
@@ -171,7 +171,7 @@ $(OUTPUT_FILE_PATH): $(OBJS)
 %.o: %.S
 	@echo Building file: $<
 	@echo AVR/GNU Preprocessing Assembler
-	$(QUOTE)avr-gcc$(QUOTE) -x assembler-with-cpp -DF_CPU=16000000 -DDEBUG -Os -ffunction-sections -g3 -Wall -c -std=gnu99 \
+	$(QUOTE)avr-gcc$(QUOTE) -x assembler-with-cpp -DF_CPU=10000000 -DDEBUG -Os -ffunction-sections -g3 -Wall -c -std=gnu99 \
 -mmcu=attiny3216 -B "$(MAKEFILE_DIR)../gcc/dev/attiny3216" \
     -D__tiny3216__ \
 -I"../config" -I"../examples/include" -I"../include" -I"../utils" -I"../utils/assembler" -I"../" -I"../include"  \
@@ -198,4 +198,5 @@ clean:
         $(OUTPUT_FILE_NAME).srec
 
 flash:  $(OUTPUT_FILE_NAME).hex
-	 pyupdi -d tiny3216 -c /dev/cu.usbserial-DA01L36P -f AtmelStart.hex
+	pyupdi -d tiny3216 -c /dev/cu.usbserial-DA01L36P -f AtmelStart.hex
+

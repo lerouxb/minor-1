@@ -105,7 +105,7 @@ AS_CPUFLAGS ?= -v3 -u_enhancedCore -D__HAS_ENHANCED_CORE__=1 -D__HAS_MUL__=1 -D_
 
 ################################################################################
 
-CPPFLAGS = -D__$(CPU)__ -DF_CPU=16000000 $(INCLUDE_PATHS) \
+CPPFLAGS = -D__$(CPU)__ -DF_CPU=10000000 $(INCLUDE_PATHS) \
   -DENABLE_BIT_DEFINITIONS
 CFLAGS =  --cpu=$(CPU) -m$(MEM_MODEL) --initializers_in_flash -e --dlib \
   --dlib_config $(dlib).h --eeprom_size $(EEPROM_SIZE)

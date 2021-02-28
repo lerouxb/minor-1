@@ -26,18 +26,18 @@ drivers:
     functionality: System
     api: Drivers:CLKCTRL:Init
     configuration:
-      $input: 16000000
-      $input_id: 16MHz Internal Oscillator (OSC16M)
-      RESERVED_InputFreq: 16000000
-      RESERVED_InputFreq_id: 16MHz Internal Oscillator (OSC16M)
+      $input: 20000000
+      $input_id: 20MHz Internal Oscillator (OSC20M)
+      RESERVED_InputFreq: 20000000
+      RESERVED_InputFreq_id: 20MHz Internal Oscillator (OSC20M)
       _$freq_output_32KHz divided by 32: 1024
       _$freq_output_External Clock (EXTCLK): '32768'
-      _$freq_output_Main Clock (CLK_MAIN): 16000000
+      _$freq_output_Main Clock (CLK_MAIN): 10000000
       _$freq_output_TCD0 Clock (CLK_TCD0): 20000000
-      clkctrl_mclkctrla_cksel: 16MHz Internal Oscillator (OSC16M)
+      clkctrl_mclkctrla_cksel: 20MHz Internal Oscillator (OSC20M)
       clkctrl_mclkctrla_clkout: false
-      clkctrl_mclkctrlb_pdiv: '6'
-      clkctrl_mclkctrlb_pen: false
+      clkctrl_mclkctrlb_pdiv: '2'
+      clkctrl_mclkctrlb_pen: true
       clkctrl_mclklock_locken: false
       clkctrl_osc16mctrla_runstdby: false
       clkctrl_osc20mctrla_runstdby: false
@@ -182,7 +182,7 @@ drivers:
       tca_cmp1: 0
       tca_cmp2: 0
       tca_cnt: 0
-      tca_ctrla_clksel: System Clock / 16
+      tca_ctrla_clksel: System Clock / 8
       tca_ctrla_enable: true
       tca_ctrlb_alupd: false
       tca_ctrlb_cmp0en: false

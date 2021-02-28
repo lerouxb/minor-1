@@ -5,7 +5,7 @@
 // <<< Use Configuration Wizard in Context Menu >>>
 
 #ifndef F_CPU
-#define F_CPU 16000000
+#define F_CPU 10000000
 #endif
 // <h> USART Clock Settings
 // <y> USART Clock source
