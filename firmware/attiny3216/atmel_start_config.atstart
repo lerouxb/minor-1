@@ -177,7 +177,7 @@ drivers:
     functionality: Timer
     api: Drivers:TCA:Init
     configuration:
-      inc_isr_harness: false
+      inc_isr_harness: true
       tca_cmp0: 0
       tca_cmp1: 0
       tca_cmp2: 0

@@ -51,7 +51,7 @@ int8_t DAC_0_init()
 	// DAC0.DATA = 0x0; /* DATA Register: 0x0 */
 
 	DAC0.CTRLA = 1 << DAC_ENABLE_bp      /* DAC Enable: enabled */
-	             | 0 << DAC_OUTEN_bp     /* Output Buffer Enable: disabled */
+	             | 1 << DAC_OUTEN_bp     /* Output Buffer Enable: disabled */
 	             | 0 << DAC_RUNSTDBY_bp; /* Run in Standby Mode: disabled */
 
 	return 0;

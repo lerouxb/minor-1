@@ -43,14 +43,15 @@ unsigned int pulse = 0;
 int pulse_amount = 1;
 
 #define MIN_PULSE 6553
-#define MAX_PULSE 65536 - 6553
+#define MAX_PULSE 58983
 
 
 ISR(TCA0_OVF_vect) {
     // TODO: should the pulse change even when we're not pressing a note or only when pressing a note?
 
-    printf(".\r\n");
+    //printf("%d\r\n", note);
 
+/*
     // forwards/backwards
     if (pulse_amount > 0) {
         if (pulse + pulse_amount > MAX_PULSE) {
@@ -63,6 +64,7 @@ ISR(TCA0_OVF_vect) {
         }
     }
     pulse += pulse_amount; // assuming PulseAmount == 1 and we're going end to end (which we're not): 65556 / 20000 == ~3.25hz
+    */
 
     if (note == -1) {
         // middle-value == "off"
@@ -72,7 +74,8 @@ ISR(TCA0_OVF_vect) {
         acc = acc + note;
 
         // funny how we're using a DAC and right now we're only using it to make a square wave :)
-        if (acc < pulse) {
+        //if (acc < pulse) {
+        if (acc < 32768) {
             DAC_0_set_output(255);
         }
         else {

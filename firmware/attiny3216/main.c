@@ -14,15 +14,21 @@ int main(void)
 
         DAC_0_enable();
 
-	while (1) {
-            // figure out which note was pressed (if any)
-	    ADC_0_measurement = ADC_0_get_conversion(4);
+        sei();
 
-            unsigned int midpoint = 780;
+	while (1) {
+            ADC_0_measurement = 0;
+            // figure out which note was pressed (if any)
+            for (int i=0; i<5; ++i) {
+	        ADC_0_measurement += ADC_0_get_conversion(4);
+            }
+            ADC_0_measurement = ADC_0_measurement / 5;
+
+            unsigned int midpoint = 755;
             int8_t key = -1;
 
-            for (int i=0; i<13; ++i) {
-                if (ADC_0_measurement > midpoint - 5 && ADC_0_measurement < midpoint + 5) {
+            for (int8_t i=0; i<13; ++i) {
+                if (ADC_0_measurement > midpoint - 9 && ADC_0_measurement < midpoint + 9) {
                     key = i;
                     break;
                 }
@@ -33,13 +39,10 @@ int main(void)
                 note = -1;
             }
             else {
-                note = notes[38 - 24 + key]; // this should be 39 but then it is too high. weird.
+                note = notes[38 + key]; // this should be 39 but then it is too high. weird.
             }
 
-	    //printf("%d -> %d\r\n", ADC_0_measurement, key);
-            /*
 	    printf("%d -> %d\r\n", ADC_0_measurement, key);
-            _delay_ms(100);
-            */
+            //_delay_ms(100);
 	}
 }
