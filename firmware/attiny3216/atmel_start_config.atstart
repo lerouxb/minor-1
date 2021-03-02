@@ -31,7 +31,7 @@ drivers:
       RESERVED_InputFreq: 20000000
       RESERVED_InputFreq_id: 20MHz Internal Oscillator (OSC20M)
       _$freq_output_32KHz divided by 32: 1024
-      _$freq_output_External Clock (EXTCLK): '32768'
+      _$freq_output_External Clock (EXTCLK): 32768
       _$freq_output_Main Clock (CLK_MAIN): 10000000
       _$freq_output_TCD0 Clock (CLK_TCD0): 20000000
       clkctrl_mclkctrla_cksel: 20MHz Internal Oscillator (OSC20M)
@@ -387,6 +387,12 @@ pads:
     mode: Digital output
     user_label: TX
     configuration: null
+  LED:
+    name: PB0
+    definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny3216-SNR::pad::PB0
+    mode: Digital output
+    user_label: LED
+    configuration: null
   BTN1:
     name: PC0
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny3216-SNR::pad::PC0
@@ -408,13 +414,6 @@ pads:
     user_label: BTN3
     configuration:
       pad_pull_config: Pull-up
-  BTN4:
-    name: PC3
-    definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny3216-SNR::pad::PC3
-    mode: Digital input
-    user_label: BTN4
-    configuration:
-      pad_pull_config: Pull-up
   SDA:
     name: PA1
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny3216-SNR::pad::PA1
@@ -429,6 +428,13 @@ pads:
     configuration: null
 toolchain_options:
 - definition:
+    identifier: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny3216-SNR::environment_definition::All:Microchip.Studio.gcc:7.0.0
+  configuration:
+    compiler_config:
+      avrgcc_compiler_miscellaneous_OtherFlags: -std=gnu99
+    linker_config:
+      avrgcc_linker_miscellaneous_LinkerFlags: ''
+- definition:
     identifier: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny3216-SNR::environment_definition::All:Microchip.Studio.xc8:7.0.0
   configuration:
     compiler_config:
@@ -437,13 +443,6 @@ toolchain_options:
       xc8_linker_miscellaneous_LinkerFlags: ''
 - definition:
     identifier: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny3216-SNR::environment_definition::All:Atmel.Studio:7.0.0
-  configuration:
-    compiler_config:
-      avrgcc_compiler_miscellaneous_OtherFlags: -std=gnu99
-    linker_config:
-      avrgcc_linker_miscellaneous_LinkerFlags: ''
-- definition:
-    identifier: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny3216-SNR::environment_definition::All:Microchip.Studio.gcc:7.0.0
   configuration:
     compiler_config:
       avrgcc_compiler_miscellaneous_OtherFlags: -std=gnu99

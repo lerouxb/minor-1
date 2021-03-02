@@ -36,6 +36,7 @@
 #include <driver_init.h>
 #include <compiler.h>
 
+extern uint32_t tick;
 extern int32_t note;
 
 uint32_t acc = 0;
@@ -46,6 +47,8 @@ int32_t pulse_amount = 85899; /* should take 2 seconds to travel a 32 bit int on
 #define MAX_PULSE 3865470567 // 90%
 
 ISR(TCA0_OVF_vect) {
+    ++tick;
+
     // TODO: should the pulse change even when we're not pressing a note or only when pressing a note?
 
     //printf("%d\r\n", note);

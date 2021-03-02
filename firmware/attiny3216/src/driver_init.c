@@ -207,6 +207,19 @@ void system_init()
 
 	DISABLE_set_dir(PORT_DIR_OUT);
 
+	/* PORT setting on PB0 */
+
+	// Set pin direction to output
+
+	LED_set_level(
+	    // <y> Initial level
+	    // <id> pad_initial_level
+	    // <false"> Low
+	    // <true"> High
+	    false);
+
+	LED_set_dir(PORT_DIR_OUT);
+
 	/* PORT setting on PC0 */
 
 	// Set pin direction to input
@@ -237,18 +250,6 @@ void system_init()
 	BTN3_set_dir(PORT_DIR_IN);
 
 	BTN3_set_pull_mode(
-	    // <y> Pull configuration
-	    // <id> pad_pull_config
-	    // <PORT_PULL_OFF"> Off
-	    // <PORT_PULL_UP"> Pull-up
-	    PORT_PULL_UP);
-
-	/* PORT setting on PC3 */
-
-	// Set pin direction to input
-	BTN4_set_dir(PORT_DIR_IN);
-
-	BTN4_set_pull_mode(
 	    // <y> Pull configuration
 	    // <id> pad_pull_config
 	    // <PORT_PULL_OFF"> Off
