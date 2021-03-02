@@ -36,22 +36,20 @@
 #include <driver_init.h>
 #include <compiler.h>
 
-extern int16_t note;
+extern int32_t note;
 
-unsigned int acc;
-unsigned int pulse = 0;
-int pulse_amount = 1;
+uint32_t acc = 0;
+uint32_t pulse = 0;
+int32_t pulse_amount = 85899; /* should take 2 seconds to travel a 32 bit int one direction*/
 
-#define MIN_PULSE 6553
-#define MAX_PULSE 58983
-
+#define MIN_PULSE 429496729 // 10%
+#define MAX_PULSE 3865470567 // 90%
 
 ISR(TCA0_OVF_vect) {
     // TODO: should the pulse change even when we're not pressing a note or only when pressing a note?
 
     //printf("%d\r\n", note);
 
-/*
     // forwards/backwards
     if (pulse_amount > 0) {
         if (pulse + pulse_amount > MAX_PULSE) {
@@ -64,7 +62,6 @@ ISR(TCA0_OVF_vect) {
         }
     }
     pulse += pulse_amount; // assuming PulseAmount == 1 and we're going end to end (which we're not): 65556 / 20000 == ~3.25hz
-    */
 
     if (note == -1) {
         // middle-value == "off"
@@ -74,8 +71,8 @@ ISR(TCA0_OVF_vect) {
         acc = acc + note;
 
         // funny how we're using a DAC and right now we're only using it to make a square wave :)
-        //if (acc < pulse) {
-        if (acc < 32768) {
+        if (acc < pulse) {
+        //if (acc < 2147483648) {
             DAC_0_set_output(255);
         }
         else {
