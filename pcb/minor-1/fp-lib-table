@@ -1,0 +1,5 @@
+(fp_lib_table
+  (lib (name EVQ-Q2B03W)(type KiCad)(uri ${KIPRJMOD}/footprints/EVQ-Q2B03W.pretty)(options "")(descr ""))
+  (lib (name CMS-15113-078S)(type KiCad)(uri ${KIPRJMOD}/footprints/CMS-15113-078S)(options "")(descr ""))
+  (lib (name SJ2-3592B-SMT-TR)(type KiCad)(uri ${KIPRJMOD}/footprints/SJ2-3592B-SMT-TR)(options "")(descr ""))
+)

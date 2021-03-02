@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name Potentiometer_Digital)(type Legacy)(uri ${KIPRJMOD}/symbols/Potentiometer_Digital/Potentiometer_Digital.lib)(options "")(descr ""))
+  (lib (name Regulator_Switching)(type Legacy)(uri ${KIPRJMOD}/symbols/Regulator_Switching/Regulator_Switching.lib)(options "")(descr ""))
+)

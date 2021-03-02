@@ -6,5 +6,6 @@
 *.hex
 *.lss
 *.map
-pcb/keyboard/_autosave-keyboard.sch
-pcb/keyboard/keyboard.sch-bak
+_autosave-keyboard.sch
+*.sch-bak
+*.kicad_pcb-bak

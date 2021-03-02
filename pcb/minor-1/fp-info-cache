@@ -1,4 +1,4 @@
-140298875890978
+143669339819087
 Battery_Holders
 Bulgin_BX0036_1xC
 
@@ -1217,6 +1217,13 @@ PUIAudio_SMT_0825_S_4_R
 0
 0
 0
+CMS-15113-078S
+SPKR_CMS-15113-078S
+
+
+0
+2
+2
 Capacitors_SMD
 CP_Elec_3x5.3
 
@@ -20971,6 +20978,13 @@ SBC18-11SURKCGKWA
 0
 0
 0
+EVQ-Q2B03W
+EVQ-Q2B03W
+
+
+0
+4
+2
 EuroBoard_Outline
 EuroBoard160mmX100mm
 
@@ -41635,6 +41649,13 @@ Resistor_SMDuniversal_0805to2512_HandSoldering
 0
 0
 0
+SJ2-3592B-SMT-TR
+CUI_SJ2-3592B-SMT-TR
+
+
+0
+3
+3
 SMD_Packages
 1Pin
 
@@ -51050,10 +51071,3 @@ SolderWirePad_single_SMD_5x10mm
 0
 0
 0
-kxt3
-kxt3
-
-
-0
-2
-2
