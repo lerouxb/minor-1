@@ -11,7 +11,7 @@
 
 volatile adc_result_t ADC_0_measurement;
 
-uint32_t tick = 0;
+volatile uint32_t tick = 0;
 uint32_t last_tick = 0;
 int32_t note = 44946936; // Middle C
 
@@ -19,6 +19,7 @@ uint16_t bounce = 0;
 uint16_t repeat = 0;
 int32_t value = 0;
 bool repeating = false;
+uint8_t octave = 0;
 
 int8_t check_up_down() {
 
@@ -29,7 +30,7 @@ int8_t check_up_down() {
         last_tick = 0;
     }
 
-    while (tick > last_tick) {
+    while (last_tick < tick) {
         ++last_tick;
         if (bounce > 0) {
             if (BTN1_get_level() == true && BTN2_get_level() == true) {
@@ -102,8 +103,10 @@ int main(void) {
         int8_t delta = check_up_down();
 
         if (delta != 0) {
-            value += delta;
-            printf("%d\r\n", value);
+            if (octave + delta >= 0 && octave + delta <= 7) {
+                octave += delta;
+                printf("%d\r\n", octave);
+            }
         }
 
         /*
@@ -125,7 +128,8 @@ int main(void) {
             }
         }
         else {
-            note = notes[39 - 24 + key];
+            //note = notes[39 - 24 + key];
+            note = notes[3 + octave * 12 + key];
         }
 
         //printf("%d -> %d\r\n", ADC_0_measurement, key);
