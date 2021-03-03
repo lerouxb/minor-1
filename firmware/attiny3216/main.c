@@ -10,16 +10,18 @@
 #define REPEAT_TICKS2 2000
 
 volatile adc_result_t ADC_0_measurement;
-
 volatile uint32_t tick = 0;
-uint32_t last_tick = 0;
-int32_t note = 44946936; // Middle C
 
+// sound stuff
+int32_t note = 44946936; // Middle C
+uint8_t octave = 0;
+
+// button stuff
+uint32_t last_tick = 0;
 uint16_t bounce = 0;
 uint16_t repeat = 0;
-int32_t value = 0;
 bool repeating = false;
-uint8_t octave = 0;
+
 
 int8_t check_up_down() {
 
@@ -32,6 +34,7 @@ int8_t check_up_down() {
 
     while (last_tick < tick) {
         ++last_tick;
+
         if (bounce > 0) {
             if (BTN1_get_level() == true && BTN2_get_level() == true) {
                 --bounce;
@@ -109,14 +112,6 @@ int main(void) {
             }
         }
 
-        /*
-        ADC_0_measurement = 0;
-        // figure out which note was pressed (if any)
-        for (int i=0; i<5; ++i) {
-            ADC_0_measurement += ADC_0_get_conversion(4);
-        }
-        ADC_0_measurement = ADC_0_measurement / 5;
-        */
         ADC_0_measurement = ADC_0_get_conversion(4);
 
         int8_t key = get_key(ADC_0_measurement);
@@ -131,8 +126,5 @@ int main(void) {
             //note = notes[39 - 24 + key];
             note = notes[3 + octave * 12 + key];
         }
-
-        //printf("%d -> %d\r\n", ADC_0_measurement, key);
-        //_delay_ms(100);
     }
 }

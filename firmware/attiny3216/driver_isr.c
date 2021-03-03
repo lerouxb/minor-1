@@ -51,8 +51,6 @@ ISR(TCA0_OVF_vect) {
 
     // TODO: should the pulse change even when we're not pressing a note or only when pressing a note?
 
-    //printf("%d\r\n", note);
-
     // forwards/backwards
     if (pulse_amount > 0) {
         if (pulse + pulse_amount > MAX_PULSE) {
