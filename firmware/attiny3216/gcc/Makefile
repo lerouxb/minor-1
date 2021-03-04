@@ -31,13 +31,11 @@ endif
 # List the subdirectories for creating object files
 SUB_DIRS +=  \
  \
-src \
-examples/src
+src
 
 # List the object files
 OBJS +=  \
 src/adc_basic.o \
-examples/src/adc_basic_example.o \
 src/slpctrl.o \
 src/bod.o \
 atmel_start.o \
@@ -45,8 +43,6 @@ src/cpuint.o \
 src/vref.o \
 src/i2c_simple_master.o \
 src/clkctrl.o \
-examples/src/dac_basic_example.o \
-examples/src/usart_basic_example.o \
 driver_isr.o \
 src/usart_basic.o \
 src/i2c_types.o \
@@ -56,11 +52,10 @@ src/i2c_master.o \
 src/tca.o \
 src/protected_io.o \
 src/driver_init.o \
-examples/src/i2c_master_example.o
+src/waveforms.o
 
 OBJS_AS_ARGS +=  \
 "src/adc_basic.o" \
-"examples/src/adc_basic_example.o" \
 "src/slpctrl.o" \
 "src/bod.o" \
 "atmel_start.o" \
@@ -68,8 +63,6 @@ OBJS_AS_ARGS +=  \
 "src/vref.o" \
 "src/i2c_simple_master.o" \
 "src/clkctrl.o" \
-"examples/src/dac_basic_example.o" \
-"examples/src/usart_basic_example.o" \
 "driver_isr.o" \
 "src/usart_basic.o" \
 "src/i2c_types.o" \
@@ -79,7 +72,7 @@ OBJS_AS_ARGS +=  \
 "src/tca.o" \
 "src/protected_io.o" \
 "src/driver_init.o" \
-"examples/src/i2c_master_example.o"
+"src/waveforms.o"
 
 # List the dependency files
 DEPS := $(OBJS:%.o=%.d)
@@ -88,8 +81,6 @@ DEPS_AS_ARGS +=  \
 "src/i2c_simple_master.d" \
 "src/tca.d" \
 "driver_isr.d" \
-"examples/src/usart_basic_example.d" \
-"examples/src/dac_basic_example.d" \
 "src/clkctrl.d" \
 "src/cpuint.d" \
 "src/adc_basic.d" \
@@ -99,13 +90,12 @@ DEPS_AS_ARGS +=  \
 "src/slpctrl.d" \
 "src/i2c_master.d" \
 "atmel_start.d" \
-"examples/src/i2c_master_example.d" \
 "src/driver_init.d" \
 "src/i2c_types.d" \
 "src/protected_io.d" \
-"examples/src/adc_basic_example.d" \
 "src/dac_basic.d" \
-"src/usart_basic.d"
+"src/usart_basic.d" \
+"src/waveforms.d"
 
 MAKEFILE_DIR := $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 OUTPUT_FILE_NAME :=AtmelStart
@@ -155,7 +145,7 @@ $(OUTPUT_FILE_PATH): $(OBJS)
 	$(QUOTE)avr-gcc$(QUOTE) -x c -DF_CPU=10000000 -DDEBUG -Os -ffunction-sections -g3 -Wall -c -std=gnu99 \
 -mmcu=attiny3216 -B "$(MAKEFILE_DIR)../gcc/dev/attiny3216" \
     -D__tiny3216__ \
--I"../config" -I"../examples/include" -I"../include" -I"../utils" -I"../utils/assembler" -I"../" -I"../include"  \
+-I"../config" -I"../include" -I"../utils" -I"../utils/assembler" -I"../" -I"../include"  \
 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"  -o "$@" "$<"
 
 	@echo Finished building: $<
@@ -166,7 +156,7 @@ $(OUTPUT_FILE_PATH): $(OBJS)
 	$(QUOTE)avr-gcc$(QUOTE) -x assembler-with-cpp -DF_CPU=10000000 -DDEBUG -Os -ffunction-sections -g3 -Wall -c -std=gnu99 \
 -mmcu=attiny3216 -B "$(MAKEFILE_DIR)../gcc/dev/attiny3216" \
     -D__tiny3216__ \
--I"../config" -I"../examples/include" -I"../include" -I"../utils" -I"../utils/assembler" -I"../" -I"../include"  \
+-I"../config" -I"../include" -I"../utils" -I"../utils/assembler" -I"../" -I"../include"  \
 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"  -o "$@" "$<"
 
 	@echo Finished building: $<
@@ -177,7 +167,7 @@ $(OUTPUT_FILE_PATH): $(OBJS)
 	$(QUOTE)avr-gcc$(QUOTE) -x assembler-with-cpp -DF_CPU=10000000 -DDEBUG -Os -ffunction-sections -g3 -Wall -c -std=gnu99 \
 -mmcu=attiny3216 -B "$(MAKEFILE_DIR)../gcc/dev/attiny3216" \
     -D__tiny3216__ \
--I"../config" -I"../examples/include" -I"../include" -I"../utils" -I"../utils/assembler" -I"../" -I"../include"  \
+-I"../config" -I"../include" -I"../utils" -I"../utils/assembler" -I"../" -I"../include"  \
 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"  -o "$@" "$<"
 
 	@echo Finished building: $<

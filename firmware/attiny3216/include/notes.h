@@ -2,7 +2,7 @@
 #define NOTES_H
 
 // These notes are all frequency * 4294967296 / 25000
-// Why 4294967296? Because we wrap around an unsigned 32-bit phase accumulator.
+// Why 4294967296? Because we wrap around an unsigned 32-bit phase accumulator
 // Why 25000? Because that's the sample rate.
 // Therefore these note numbers are the "phase steps" per sample for each note.
 const uint32_t notes[] = {
@@ -21,7 +21,7 @@ const uint32_t notes[] = {
 /* A1 */ 9448928,
 /* A♯1/B♭1 */ 10010791,
 /* B1 */ 10606063,
-/* C */ 11236732,
+/* C2 */ 11236732,
 /* C♯2/D♭2 */ 11904904,
 /* D2 */ 12612805,
 /* D♯2/E♭2 */ 13362803,

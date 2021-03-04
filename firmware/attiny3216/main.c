@@ -3,6 +3,7 @@
 #include <util/delay.h>
 #include <util/delay.h>
 #include "notes.h"
+#include "waveforms.h"
 
 // about 25000 ticks per second
 #define DEBOUNCE_TICKS 1250
@@ -10,11 +11,12 @@
 #define REPEAT_TICKS2 2000
 
 volatile adc_result_t ADC_0_measurement;
-volatile uint32_t tick = 0;
+extern volatile uint32_t tick;
 
 // sound stuff
-int32_t note = 44946936; // Middle C
+int32_t jump = 44946936; // Middle C
 uint8_t octave = 0;
+waveform_t waveform = Triangle;
 
 // button stuff
 uint32_t last_tick = 0;
@@ -75,7 +77,7 @@ int8_t check_up_down() {
     return delta;
 }
 
-int8_t get_key(value) {
+int8_t get_key(adc_result_t value) {
 
     // TODO: subtract 10, use as start, check > that and < that plus 20. Should be faster.
     unsigned int midpoint = 755;
@@ -101,7 +103,7 @@ int main(void) {
     sei();
 
     while (1) {
-        LED_toggle_level();
+        //LED_toggle_level(); // produces tons of noise that affects the DAC
 
         int8_t delta = check_up_down();
 
@@ -119,12 +121,12 @@ int main(void) {
         if (key == -1) {
             // Prefer to keep the previous note if it looks like something was pressed because the most likely explanation is that two keys are held down and it is _just_ barely putting us out of range of either of them.
             if (ADC_0_measurement < 745) {
-                note = -1;
+                jump = -1;
             }
         }
         else {
-            //note = notes[39 - 24 + key];
-            note = notes[3 + octave * 12 + key];
+            //jump = notes[39 - 24 + key];
+            jump = notes[3 + octave * 12 + key];
         }
     }
 }
