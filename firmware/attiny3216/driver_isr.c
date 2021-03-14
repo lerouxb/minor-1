@@ -20,6 +20,7 @@ ISR(TCA0_OVF_vect) {
 
     if (jump == -1) {
         sample = 127; // middle value
+        DISABLE_set_level(false); // off before next sample
     }
     else {
         phase = phase + jump;
@@ -37,6 +38,8 @@ ISR(TCA0_OVF_vect) {
                 sample = triangle_sample();
                 break;
         }
+
+        DISABLE_set_level(true); // on before next sample
     }
 
     // for now no post-processing

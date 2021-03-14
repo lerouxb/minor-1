@@ -1,7 +1,6 @@
 #include <string.h>
 #include <atmel_start.h>
 #include <util/delay.h>
-#include <util/delay.h>
 #include "notes.h"
 #include "waveforms.h"
 
@@ -16,13 +15,15 @@ extern volatile uint32_t tick;
 // sound stuff
 int32_t jump = 44946936; // Middle C
 uint8_t octave = 0;
-waveform_t waveform = Triangle;
+waveform_t waveform = Pulse;
 
 // button stuff
 uint32_t last_tick = 0;
 uint16_t bounce = 0;
 uint16_t repeat = 0;
 bool repeating = false;
+
+void my_function ();
 
 
 int8_t check_up_down() {
@@ -98,9 +99,11 @@ int main(void) {
 
     atmel_start_init();
 
+    DISABLE_set_level(false); // start off
     DAC_0_enable();
 
     sei();
+
 
     while (1) {
         //LED_toggle_level(); // produces tons of noise that affects the DAC
@@ -111,6 +114,7 @@ int main(void) {
             if (octave + delta >= 0 && octave + delta <= 7) {
                 octave += delta;
                 printf("%d\r\n", octave);
+                my_function();
             }
         }
 

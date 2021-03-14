@@ -35,6 +35,8 @@ src
 
 # List the object files
 OBJS +=  \
+src/Tiny4kOLED.o \
+src/ssd1306_128x32.o \
 src/adc_basic.o \
 src/slpctrl.o \
 src/bod.o \
@@ -55,6 +57,9 @@ src/driver_init.o \
 src/waveforms.o
 
 OBJS_AS_ARGS +=  \
+"src/Tiny4kOLED.o" \
+"src/ssd1306_128x32.o" \
+"src/test.o" \
 "src/adc_basic.o" \
 "src/slpctrl.o" \
 "src/bod.o" \
@@ -78,6 +83,9 @@ OBJS_AS_ARGS +=  \
 DEPS := $(OBJS:%.o=%.d)
 
 DEPS_AS_ARGS +=  \
+"src/Tiny4kOLED.d" \
+"src/ssd1306_128x32.d" \
+"src/test.d" \
 "src/i2c_simple_master.d" \
 "src/tca.d" \
 "driver_isr.d" \
@@ -104,6 +112,7 @@ OUTPUT_FILE_PATH +=$(OUTPUT_FILE_NAME).elf
 OUTPUT_FILE_PATH_AS_ARGS +=$(OUTPUT_FILE_NAME).elf
 
 vpath %.c ../
+vpath %.cc ../
 vpath %.s ../
 vpath %.S ../
 
@@ -143,6 +152,17 @@ $(OUTPUT_FILE_PATH): $(OBJS)
 	@echo Building file: $<
 	@echo AVR/GNU C Compiler
 	$(QUOTE)avr-gcc$(QUOTE) -x c -DF_CPU=10000000 -DDEBUG -Os -ffunction-sections -g3 -Wall -c -std=gnu99 \
+-mmcu=attiny3216 -B "$(MAKEFILE_DIR)../gcc/dev/attiny3216" \
+    -D__tiny3216__ \
+-I"../config" -I"../include" -I"../utils" -I"../utils/assembler" -I"../" -I"../include"  \
+-MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"  -o "$@" "$<"
+
+	@echo Finished building: $<
+
+%.o: %.cc
+	@echo Building file: $<
+	@echo AVR/GNU C++ Compiler
+	$(QUOTE)avr-g++$(QUOTE) -x c++ -DF_CPU=10000000 -DDEBUG -Os -ffunction-sections -g3 -Wall -c -std=c++14 \
 -mmcu=attiny3216 -B "$(MAKEFILE_DIR)../gcc/dev/attiny3216" \
     -D__tiny3216__ \
 -I"../config" -I"../include" -I"../utils" -I"../utils/assembler" -I"../" -I"../include"  \

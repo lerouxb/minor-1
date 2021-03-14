@@ -1,0 +1,16 @@
+board=atxy6
+custom_bodmode=atxy6_disabled
+custom_bodvoltage=atxy6_1v8
+custom_chip=atxy6_3216
+custom_clock=atxy6_20internal
+custom_eesave=atxy6_enable
+custom_millis=atxy6_enabled
+custom_resetpin=atxy6_UPDI
+custom_serialevent=atxy6_no
+custom_startuptime=atxy6_8
+custom_uartvoltage=atxy6_5v
+programmer=megaTinyCore:pyupdi
+serial.port=/dev/cu.usbserial-14120
+
+
+megaTinyCore:megaavr:atxy6:bodmode=disabled,bodvoltage=1v8,chip=3216,clock=20internal,eesave=enable,millis=enabled,resetpin=UPDI,serialevent=no,startuptime=8,uartvoltage=5v

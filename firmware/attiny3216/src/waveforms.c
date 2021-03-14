@@ -1,10 +1,8 @@
 #include "waveforms.h"
 
-extern int32_t jump;
-extern uint32_t phase;
-
 uint32_t pulse = 0;
-int32_t pulse_amount = 85899; /* should take 2 seconds to travel a 32 bit int one direction*/
+//int32_t pulse_amount = 85899; /* should take 2 seconds to travel a 32 bit int one direction*/
+int32_t pulse_amount = 42949;
 
 uint8_t pulse_sample() {
 
