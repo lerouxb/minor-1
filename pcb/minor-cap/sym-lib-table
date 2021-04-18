@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name "keyboard-13")(type "KiCad")(uri "${KIPRJMOD}/symbols/Keyboard-13/keyboard-13.kicad_sym")(options "")(descr ""))
+  (lib (name "QT60160")(type "KiCad")(uri "${KIPRJMOD}/symbols/QT60160/QT60160.kicad_sym")(options "")(descr ""))
+)
