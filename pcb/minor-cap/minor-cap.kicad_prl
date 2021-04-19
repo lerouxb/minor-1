@@ -37,6 +37,7 @@
       8,
       9,
       10,
+      11,
       12,
       13,
       14,
@@ -62,8 +63,8 @@
       35,
       36
     ],
-    "visible_layers": "7f97fff_80000001",
-    "zone_display_mode": 0
+    "visible_layers": "7f9ffef_80000001",
+    "zone_display_mode": 2
   },
   "meta": {
     "filename": "minor-cap.kicad_prl",
