@@ -45,7 +45,7 @@
         "silk_text_upright": false,
         "zones": {
           "45_degree_only": false,
-          "min_clearance": 0.3
+          "min_clearance": 0.5
         }
       },
       "diff_pair_dimensions": [
@@ -366,7 +366,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.127,
-        "via_diameter": 0.6,
+        "via_diameter": 0.7,
         "via_drill": 0.3,
         "wire_width": 6.0
       }
@@ -425,7 +425,7 @@
   },
   "sheets": [
     [
-      "69ad4925-ecd3-473f-af5d-82395ac1d62c",
+      "60af9b50-47bf-46cb-b661-33f932ee84e7",
       ""
     ]
   ],

@@ -49,7 +49,7 @@ uint8_t nextSample(){
     uint16_t sample = 0;
 
     if (isPlaying) {
-        for (int8_t i = 0; i < 1; ++i) {
+        for (int8_t i = 0; i < 1; ++i) { // TODO: bring back two
             if (oscillators[0].phase < oscillators[0].jump && i == 1 && syncOscillators) {
                 // sync the second oscillator to the first one if oscillator sync is enabled and the first oscillator just wrapped
                 oscillators[1].phase = oscillators[0].phase;
@@ -72,7 +72,8 @@ uint8_t nextSample(){
                     break;
             }
         }
-        sample = sample >> 1; // roughly divide by 2
+        // TODO: this temporarily commented while we only have pulse waves
+        //sample = sample >> 1; // roughly divide by 2
     }
     else {
         //sample = 127; // middle value

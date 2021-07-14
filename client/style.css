@@ -1,0 +1,11 @@
+.connected-toolbar {
+    display: none;
+}
+
+.connected .connected-toolbar {
+    display: block
+}
+
+.connected .disconnected-toolbar {
+    display: none;
+}
